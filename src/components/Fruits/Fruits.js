@@ -1,11 +1,13 @@
 import AvailableItems from './AvailableItems';
+import Summary from '../Layout/Summary';
 
-const FruitsItem = () => {
+const Fruits = () => {
   return (
     <div>
+      <Summary />
       <AvailableItems />
     </div>
   );
 };
 
-export default FruitsItem;
+export default Fruits;

@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 
 import Header from './components/Layout/Header';
-import FruitsItem from './components/Fruits/FruitsItem';
+import Fruits from './components/Fruits/Fruits';
 
 import './App.css';
 
@@ -9,7 +9,7 @@ function App() {
   return (
     <Fragment>
       <Header />
-      <FruitsItem />
+      <Fruits />
     </Fragment>
   );
 }
