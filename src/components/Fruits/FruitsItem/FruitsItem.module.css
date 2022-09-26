@@ -1,0 +1,12 @@
+.fruits-item {
+  font-size: 1rem;
+}
+
+.fruits-item h4 {
+  margin-bottom: 0;
+}
+
+.fruits-item p {
+  margin-top: 0.3rem;
+  word-break: keep-all;
+}
