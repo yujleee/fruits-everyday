@@ -1,0 +1,8 @@
+.fruits-list {
+  display: flex;
+  width: 1000px;
+  margin: 3rem auto;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}

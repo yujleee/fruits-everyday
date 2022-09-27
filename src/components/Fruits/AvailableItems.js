@@ -1,12 +1,13 @@
 import Card from '../UI/Card';
 import FruitsItem from './FruitsItem/FruitsItem';
+import classes from './AvailableItems.module.css';
 
 const AvailableItems = () => {
   const DUMMY_ITEMS = [
     {
       id: 'f1',
       name: '귤',
-      description: '달콤한 제주 하우스 감귤',
+      description: '갓 수확한 달콤한 제주 하우스 감귤',
       image: '/images/img-fruits01.jpg',
       price: 23000,
     },
@@ -41,14 +42,14 @@ const AvailableItems = () => {
     {
       id: 'f6',
       name: '딸기',
-      description: '강원도 고랭지 여름 딸기',
+      description: '상큼 달콤 강원도 고랭지 여름 딸기',
       image: '/images/img-fruits06.jpg',
       price: 23000,
     },
   ];
 
   return (
-    <ul>
+    <ul className={classes['fruits-list']}>
       {DUMMY_ITEMS.map((fruit) => (
         <Card>
           <FruitsItem
