@@ -1,8 +1,16 @@
-import React from 'react';
+import { useDispatch } from 'react-redux';
 
+import { modalActions } from '../../store/modal-slice';
+import Modal from '../UI/Modal';
 import classes from './Cart.module.css';
 
 const Cart = () => {
+  const dispatch = useDispatch();
+
+  const hideModalHandler = () => {
+    dispatch(modalActions.toggle());
+  };
+
   const cartItem = (
     <ul className={classes['cart-item']}>
       {[
@@ -20,17 +28,19 @@ const Cart = () => {
   );
 
   return (
-    <React.Fragment>
+    <Modal>
       {cartItem}
       <div className={classes.total}>
         <span>총 금액</span>
         <span>40000</span>
       </div>
       <div className={classes.actions}>
-        <button className={classes['button--alt']}>닫기</button>
+        <button className={classes['button--alt']} onClick={hideModalHandler}>
+          닫기
+        </button>
         <button className={classes.button}>주문하기</button>
       </div>
-    </React.Fragment>
+    </Modal>
   );
 };
 
