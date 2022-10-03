@@ -17,7 +17,6 @@ const HeaderCartButton = () => {
       <span className={classes.icon}>
         <CartIcon />
       </span>
-      장바구니
       <span className={classes.badge}>{quantity}</span>
     </button>
   );
