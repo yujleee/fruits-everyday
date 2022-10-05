@@ -1,4 +1,4 @@
-.cart-items {
+.cart-list {
   margin: 0;
   padding: 0;
   max-height: 20rem;
@@ -11,7 +11,8 @@
   align-items: center;
   font-weight: bold;
   font-size: 1.5rem;
-  margin: 1rem 0;
+  margin: 2rem 0;
+  padding: 0 0.4rem;
 }
 
 .actions {
@@ -25,6 +26,7 @@
   padding: 0.5rem 2rem;
   border-radius: 30px;
   margin-left: 1rem;
+  font-weight: 700;
 }
 
 .actions button:hover,

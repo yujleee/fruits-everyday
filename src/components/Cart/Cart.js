@@ -1,28 +1,30 @@
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { modalActions } from '../../store/modal-slice';
+import CartItem from './CartItem';
 import Modal from '../UI/Modal';
 import classes from './Cart.module.css';
 
 const Cart = () => {
   const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart.items);
+  const totalPrice = useSelector((state) => state.cart.totalPrice);
 
   const hideModalHandler = () => {
     dispatch(modalActions.toggle());
   };
 
   const cartItem = (
-    <ul className={classes['cart-item']}>
-      {[
-        {
-          id: 'f1',
-          name: '귤',
-          description: '갓 수확한 달콤한 제주 하우스 감귤',
-          image: '/images/img-fruits01.jpg',
-          price: 23000,
-        },
-      ].map((item) => (
-        <li>{item.name}</li>
+    <ul className={classes['cart-list']}>
+      {cart.map((item) => (
+        <CartItem
+          key={item.id}
+          id={item.id}
+          name={item.name}
+          price={item.price}
+          quantity={item.quantity}
+          image={item.image}
+        />
       ))}
     </ul>
   );
@@ -32,7 +34,7 @@ const Cart = () => {
       {cartItem}
       <div className={classes.total}>
         <span>총 금액</span>
-        <span>40000</span>
+        <span className={classes.price}>{totalPrice.toLocaleString()} 원</span>
       </div>
       <div className={classes.actions}>
         <button className={classes['button--alt']} onClick={hideModalHandler}>
