@@ -1,13 +1,30 @@
+import { useDispatch } from 'react-redux';
+
+import { cartActions } from '../../store/cart-slice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faMinus } from '@fortawesome/free-solid-svg-icons';
 import classes from './CartItem.module.css';
 
 const CartItem = (props) => {
+  const dispatch = useDispatch();
   const { name, quantity, price, id, image } = props;
 
-  const addToCartHandler = () => {};
-  const removeToCartHandler = () => {};
+  const addToCartHandler = () => {
+    dispatch(
+      cartActions.addToCart({
+        id,
+        name,
+        price,
+        onePiece: price,
+        quantity,
+        image,
+      })
+    );
+  };
+  const removeToCartHandler = () => {
+    dispatch(cartActions.removeToCart({ id }));
+  };
 
   return (
     <li className={classes.item} id={id}>

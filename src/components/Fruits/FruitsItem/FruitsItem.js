@@ -12,6 +12,7 @@ const FruitsItem = ({ id, name, description, price, image }) => {
         id,
         name,
         price,
+        onePiece: price,
         image,
         quantity: 1,
       })
