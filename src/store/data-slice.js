@@ -7,7 +7,8 @@ const dataSlice = createSlice({
   },
   reducers: {
     loadData(state, action) {
-      state.fruits = action.payload;
+      const loadedData = action.payload.loadedData;
+      state.fruits = Array.from(loadedData);
     },
   },
 });

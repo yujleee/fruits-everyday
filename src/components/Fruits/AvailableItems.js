@@ -1,67 +1,56 @@
-import Card from '../UI/Card';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect, useCallback } from 'react';
+
 import FruitsItem from './FruitsItem/FruitsItem';
+import { dataActions } from '../../store/data-slice';
 import classes from './AvailableItems.module.css';
 
 const AvailableItems = () => {
-  const DUMMY_ITEMS = [
-    {
-      id: 'f1',
-      name: '귤',
-      description: '갓 수확한 달콤한 제주 하우스 감귤',
-      image: '/images/img-fruits01.jpg',
-      price: 23000,
-    },
-    {
-      id: 'f2',
-      name: '사과',
-      description: '껍질째 통째로 먹는 가을 햇 홍로 사과',
-      image: '/images/img-fruits02.jpg',
-      price: 48900,
-    },
-    {
-      id: 'f3',
-      name: '포도',
-      description: '산지직송 프리미엄 고당도 캠벨포도',
-      image: '/images/img-fruits03.jpg',
-      price: 26000,
-    },
-    {
-      id: 'f4',
-      name: '멜론',
-      description: '달콤한 국내산 고당도 머스크멜론',
-      image: '/images/img-fruits04.jpg',
-      price: 28900,
-    },
-    {
-      id: 'f5',
-      name: '바나나',
-      description: '맛있고 건강한 유기농 제주 바나나',
-      image: '/images/img-fruits05.jpg',
-      price: 14700,
-    },
-    {
-      id: 'f6',
-      name: '딸기',
-      description: '상큼 달콤 강원도 고랭지 여름 딸기',
-      image: '/images/img-fruits06.jpg',
-      price: 23000,
-    },
-  ];
+  const dispatch = useDispatch();
+  const fruits = useSelector((state) => state.data.fruits);
+
+  const fetchData = useCallback(async () => {
+    const response = await fetch('https://fruits-everyday-default-rtdb.firebaseio.com/fruits.json');
+
+    if (!response.ok) {
+      return;
+    }
+
+    const data = await response.json();
+    const loadedData = [];
+
+    for (const key in data) {
+      loadedData.push({
+        id: key,
+        name: data[key].name,
+        description: data[key].description,
+        image: data[key].image,
+        price: data[key].price,
+      });
+    }
+
+    dispatch(dataActions.loadData({ loadedData }));
+  }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  const fruitItems = fruits.map((fruit) => (
+    <FruitsItem
+      key={fruit.id}
+      id={fruit.id}
+      name={fruit.name}
+      description={fruit.description}
+      image={fruit.image}
+      price={fruit.price}
+    />
+  ));
 
   return (
-    <ul className={classes['fruits-list']}>
-      {DUMMY_ITEMS.map((fruit) => (
-        <Card>
-          <FruitsItem
-            id={fruit.id}
-            name={fruit.name}
-            description={fruit.description}
-            image={fruit.image}
-            price={fruit.price}
-          />
-        </Card>
-      ))}
-    </ul>
+    <section classes={classes['fruits-wrap']}>
+      <ul className={classes['fruits-list']}>{fruitItems}</ul>
+    </section>
   );
 };
 
