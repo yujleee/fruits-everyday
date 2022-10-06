@@ -1,21 +1,19 @@
-import React, { Fragment } from 'react';
-import { useSelector } from 'react-redux';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import Header from './components/Layout/Header';
-import Fruits from './components/Fruits/Fruits';
-import Cart from './components/Cart/Cart';
+import Main from './pages/Main';
+import Order from './pages/Order';
 
 import './App.css';
 
 function App() {
-  const modal = useSelector((state) => state.modal.isVisible);
-
   return (
-    <Fragment>
-      {modal && <Cart />}
-      <Header />
-      <Fruits />
-    </Fragment>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/order" element={<Order />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
