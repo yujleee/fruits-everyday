@@ -8,13 +8,10 @@ const Header = () => {
     <Fragment>
       <header className={classes.header}>
         <h1 className={classes.logo}>
-          <img src="/images/logo.png" />
+          <img src="/images/logo.png" alt="매일과일" />
         </h1>
         <HeaderCartButton />
       </header>
-      <div className={classes.bnr}>
-        <img src="/images/fruits-bnr.jpg" />
-      </div>
     </Fragment>
   );
 };
