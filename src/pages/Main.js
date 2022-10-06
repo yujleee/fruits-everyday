@@ -5,7 +5,7 @@ import Fruits from '../components/Fruits/Fruits';
 import Cart from '../components/Cart/Cart';
 
 const Main = () => {
-  const modal = useSelector((state) => state.modal.isVisible);
+  const modal = useSelector((state) => state.ui.visibleModal);
 
   return (
     <>

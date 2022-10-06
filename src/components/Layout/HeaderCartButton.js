@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 
-import { modalActions } from '../../store/modal-slice';
+import { uiActions } from '../../store/ui-slice';
 import CartIcon from '../Cart/CartIcon';
 import classes from './HeaderCartButton.module.css';
 
@@ -9,7 +9,7 @@ const HeaderCartButton = () => {
   const quantity = useSelector((state) => state.cart.totalQuantity);
 
   const toggleModalHandler = () => {
-    dispatch(modalActions.toggle());
+    dispatch(uiActions.toggleModal());
   };
 
   return (

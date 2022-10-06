@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { modalActions } from '../../store/modal-slice';
+import { uiActions } from '../../store/ui-slice';
 import CartItem from './CartItem';
 import Modal from '../UI/Modal';
 import classes from './Cart.module.css';
@@ -12,7 +12,7 @@ const Cart = () => {
   const totalPrice = useSelector((state) => state.cart.totalPrice);
 
   const hideModalHandler = () => {
-    dispatch(modalActions.toggle());
+    dispatch(uiActions.toggleModal());
   };
 
   const cartItem = (
