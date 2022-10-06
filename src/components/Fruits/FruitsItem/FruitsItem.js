@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 
 import { cartActions } from '../../../store/cart-slice';
+import { uiActions } from '../../../store/ui-slice';
 import classes from './FruitsItem.module.css';
 
 const FruitsItem = ({ id, name, description, price, image }) => {
@@ -17,6 +18,8 @@ const FruitsItem = ({ id, name, description, price, image }) => {
         quantity: 1,
       })
     );
+
+    dispatch(uiActions.cartActive());
   };
 
   return (

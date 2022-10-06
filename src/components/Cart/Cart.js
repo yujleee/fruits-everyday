@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -9,7 +10,14 @@ import classes from './Cart.module.css';
 const Cart = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.items);
+  const activeCart = useSelector((state) => state.ui.activeCart);
   const totalPrice = useSelector((state) => state.cart.totalPrice);
+
+  useEffect(() => {
+    if (cart.length < 1) {
+      dispatch(uiActions.cartDisabled());
+    }
+  }, [cart, dispatch]);
 
   const hideModalHandler = () => {
     dispatch(uiActions.toggleModal());
@@ -41,9 +49,16 @@ const Cart = () => {
         <button className={classes['button--alt']} onClick={hideModalHandler}>
           닫기
         </button>
-        <button className={classes.button}>
-          <Link to="/order">주문하기</Link>
-        </button>
+        {!activeCart && (
+          <button className={classes['button--disabled']} disabled={!activeCart}>
+            주문하기
+          </button>
+        )}
+        {activeCart && (
+          <button className={classes.button}>
+            <Link to="/order">주문하기</Link>
+          </button>
+        )}
       </div>
     </Modal>
   );
