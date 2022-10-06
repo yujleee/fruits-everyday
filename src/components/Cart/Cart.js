@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { modalActions } from '../../store/modal-slice';
 import CartItem from './CartItem';
@@ -40,7 +41,9 @@ const Cart = () => {
         <button className={classes['button--alt']} onClick={hideModalHandler}>
           닫기
         </button>
-        <button className={classes.button}>주문하기</button>
+        <button className={classes.button}>
+          <Link to="/order">주문하기</Link>
+        </button>
       </div>
     </Modal>
   );
