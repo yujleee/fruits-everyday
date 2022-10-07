@@ -55,7 +55,7 @@ const Cart = () => {
           </button>
         )}
         {activeCart && (
-          <button className={classes.button}>
+          <button className={classes.button} onClick={hideModalHandler}>
             <Link to="/order">주문하기</Link>
           </button>
         )}
