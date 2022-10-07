@@ -1,0 +1,48 @@
+.order-wrap {
+  width: 1000px;
+  margin: 0 auto;
+  padding: 5rem;
+}
+
+.cart-list {
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 3rem;
+}
+
+.input-wrap {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.4rem;
+}
+
+label {
+  margin-bottom: 0.4rem;
+}
+
+input {
+  width: 240px;
+  height: 36px;
+}
+
+.error-text {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-red);
+}
+
+.btn-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.submit {
+  width: 200px;
+  background-color: var(--color-green);
+  font-weight: 700;
+}
+
+button:hover {
+  background-color: var(--color-green-700);
+}
