@@ -1,0 +1,18 @@
+.checkout {
+  text-align: center;
+  padding: 10rem 5rem;
+}
+
+.checkout .title {
+  font-size: 2rem;
+}
+
+.checkout .text {
+  margin-bottom: 5rem;
+  color: var(--color-gray-500);
+}
+
+.checkout .btn {
+  width: 100px;
+  background-color: var(--color-green);
+}
