@@ -1,0 +1,18 @@
+.footer {
+  width: 100%;
+  height: 100px;
+  padding: 0 10rem;
+  background-color: var(--color-footer);
+  color: var(--color-white);
+}
+
+.footer h2 {
+  margin: 0;
+  margin-bottom: 0.4rem;
+  padding-top: 1.2rem;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
