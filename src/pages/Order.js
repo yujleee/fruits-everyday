@@ -1,8 +1,9 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-import Header from '../components/Layout/Header';
 import CartItem from '../components/Cart/CartItem';
 import useInput from '../hooks/use-input';
+import { cartActions } from '../store/cart-slice';
 import classes from './Order.module.css';
 
 const checkEmailIsValid = (email) => {
@@ -16,7 +17,10 @@ const checkPhoneIsValid = (phone) => {
 };
 
 const Order = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const cart = useSelector((state) => state.cart.items);
+  const totalPrice = useSelector((state) => state.cart.totalPrice);
 
   const {
     value: enteredName,
@@ -75,7 +79,7 @@ const Order = () => {
   const submitFormHandler = (e) => {
     e.preventDefault();
 
-    if (!nameIsValid || !addressIsValid || !emailIsValid) {
+    if (!nameIsValid || !addressIsValid || !emailIsValid || !phoneIsValid) {
       return;
     }
 
@@ -89,6 +93,8 @@ const Order = () => {
     resetAddress();
     resetEmail();
     resetPhone();
+    dispatch(cartActions.resetCart());
+    navigate('/checkout', { replace: true });
   };
 
   const cartItem = (
@@ -108,10 +114,12 @@ const Order = () => {
 
   return (
     <>
-      <Header />
       <section className={classes['order-wrap']}>
         <h1>주문하기</h1>
         {cartItem}
+        <div className={classes.total}>
+          <strong>총 {totalPrice.toLocaleString()} 원</strong>
+        </div>
         <article className={classes['form-wrap']}>
           <h2>배송 정보</h2>
           <form onSubmit={submitFormHandler}>
