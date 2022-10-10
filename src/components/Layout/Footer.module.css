@@ -4,6 +4,8 @@
   padding: 0 10rem;
   background-color: var(--color-footer);
   color: var(--color-white);
+  position: fixed;
+  bottom: 0;
 }
 
 .footer h2 {

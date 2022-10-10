@@ -3,7 +3,8 @@
 :root {
   --color-green: #00ae6c;
   --color-green-700: #03955f;
-  --color-yellow: #ffe100;
+  --color-footer: #014e31;
+  --color-red: #ec2727;
   --color-bg: #f6bb02;
   --color-white: #fff;
   --color-gray-700: #333;
@@ -26,6 +27,7 @@ button {
   margin: 0 1rem;
   color: var(--color-white);
   cursor: pointer;
+  font-weight: 700;
 }
 
 ul {
