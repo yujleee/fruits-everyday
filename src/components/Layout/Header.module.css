@@ -13,7 +13,6 @@
 }
 
 .header .logo {
-  width: 120px;
   display: flex;
   align-items: center;
   margin-right: auto;
@@ -22,14 +21,16 @@
 .header .logo img {
   height: auto;
   display: block;
+  width: auto;
+  height: 46px;
 }
 
 .header button {
   margin-right: 3.2rem;
 }
 
-@media screen and (min-width: 320px) {
+@media screen and (min-width: 720px) {
   .header .logo image {
-    width: 70%;
+    height: 60px;
   }
 }

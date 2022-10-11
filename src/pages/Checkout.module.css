@@ -1,6 +1,6 @@
 .checkout {
   text-align: center;
-  padding: 10rem 5rem;
+  padding: 6rem 5rem;
 }
 
 .checkout .title {
@@ -15,4 +15,10 @@
 .checkout .btn {
   width: 100px;
   background-color: var(--color-green);
+}
+
+@media (min-width: 768px) {
+  .checkout {
+    padding: 10rem 5rem;
+  }
 }

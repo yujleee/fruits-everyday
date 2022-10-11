@@ -1,7 +1,6 @@
 .order-wrap {
-  width: 1000px;
-  padding: 5rem;
-  margin: 0 auto;
+  width: 70%;
+  margin: 5rem auto 2rem;
 }
 
 .order-wrap h1 {
@@ -14,8 +13,13 @@
   margin-bottom: 3rem;
 }
 
-.cart-list {
+.order-wrap .cart-list {
+  padding-left: 0;
   border-bottom: 1px solid var(--color-border);
+}
+
+.order-wrap .cart-list .cart-item {
+  padding: 1rem 0;
 }
 
 .input-wrap {
@@ -31,6 +35,7 @@ label {
 input {
   width: 240px;
   height: 36px;
+  font-size: 1rem;
 }
 
 .error-text {
@@ -54,4 +59,15 @@ input {
 
 button:hover {
   background-color: var(--color-green-700);
+}
+
+@media (min-width: 768px) {
+  .order-wrap {
+    width: 40rem;
+    padding: 5rem;
+  }
+
+  input {
+    font-size: 0.9rem;
+  }
 }
