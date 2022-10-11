@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import CartItem from '../components/Cart/CartItem';
+import LoadingSpinner from '../components/UI/LoadingSpinner';
 import useInput from '../hooks/use-input';
 import { cartActions } from '../store/cart-slice';
 import classes from './Order.module.css';
@@ -19,6 +21,8 @@ const checkPhoneIsValid = (phone) => {
 const Order = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [isLoading, setIsLoading] = useState(false);
   const cart = useSelector((state) => state.cart.items);
   const totalPrice = useSelector((state) => state.cart.totalPrice);
 
@@ -85,6 +89,7 @@ const Order = () => {
 
     try {
       submitCartHandler();
+      setIsLoading(true);
     } catch (error) {
       console.log(error);
     }
@@ -94,6 +99,7 @@ const Order = () => {
     resetEmail();
     resetPhone();
     dispatch(cartActions.resetCart());
+    setIsLoading(false);
     navigate('/checkout', { replace: true });
   };
 
@@ -114,21 +120,22 @@ const Order = () => {
 
   return (
     <>
+      {isLoading && <LoadingSpinner />}
       <section className={classes['order-wrap']}>
         <h1>주문하기</h1>
         {cartItem}
-        <div className={classes.total}>
+        <div className={classes.total} aria-label="가격">
           <strong>총 {totalPrice.toLocaleString()} 원</strong>
         </div>
         <article className={classes['form-wrap']}>
           <h2>배송 정보</h2>
           <form onSubmit={submitFormHandler}>
-            <div className={classes['input-wrap']}>
+            <div className={classes['input-wrap']} aria-label="이름입력">
               <label htmlFor="name">이름</label>
               <input type="text" id="name" value={enteredName} onChange={nameChangeHandler} onBlur={nameBlurHandler} />
               {nameHasError && <p className={classes['error-text']}>이름은 2글자 이상이어야 합니다.</p>}
             </div>
-            <div className={classes['input-wrap']}>
+            <div className={classes['input-wrap']} aria-label="주소입력">
               <label htmlFor="address">주소</label>
               <input
                 type="text"
@@ -139,7 +146,7 @@ const Order = () => {
               />
               {addressHasError && <p className={classes['error-text']}>주소를 올바르게 입력해주세요.</p>}
             </div>
-            <div className={classes['input-wrap']}>
+            <div className={classes['input-wrap']} aria-label="휴대번호입력">
               <label htmlFor="phone">휴대번호</label>
               <input
                 type="tel"
@@ -150,7 +157,7 @@ const Order = () => {
               />
               {phoneHasError && <p className={classes['error-text']}>휴대번호를 올바르게 입력해주세요.</p>}
             </div>
-            <div className={classes['input-wrap']}>
+            <div className={classes['input-wrap']} aria-label="이메일입력">
               <label htmlFor="email">이메일</label>
               <input
                 type="email"
@@ -161,7 +168,7 @@ const Order = () => {
               />
               {emailHasError && <p className={classes['error-text']}>메일주소를 올바르게 입력해주세요.</p>}
             </div>
-            <div className={classes['btn-wrap']}>
+            <div className={classes['btn-wrap']} aria-hidden>
               <button className={classes.submit}>주문하기</button>
             </div>
           </form>
