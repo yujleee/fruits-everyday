@@ -1,11 +1,11 @@
 import Banner from '../components/Layout/Banner';
-import Fruits from '../components/Fruits/Fruits';
+import AvailableItems from '../components/Fruits/AvailableItems';
 
 const Main = () => {
   return (
     <>
       <Banner />
-      <Fruits />
+      <AvailableItems />
     </>
   );
 };
