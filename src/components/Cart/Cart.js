@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { uiActions } from '../../store/ui-slice';
-import CartItem from './CartItem';
+import CartList from './CartList';
 import Modal from '../UI/Modal';
 import classes from './Cart.module.css';
 
@@ -23,24 +23,9 @@ const Cart = () => {
     dispatch(uiActions.toggleModal());
   };
 
-  const cartItem = (
-    <ul className={classes['cart-list']}>
-      {cart.map((item) => (
-        <CartItem
-          key={item.id}
-          id={item.id}
-          name={item.name}
-          price={item.price}
-          quantity={item.quantity}
-          image={item.image}
-        />
-      ))}
-    </ul>
-  );
-
   return (
     <Modal>
-      {cartItem}
+      <CartList />
       <div className={classes.total} aria-label="총 금액">
         <span>총 금액</span>
         <span className={classes.price}>{totalPrice.toLocaleString()} 원</span>
