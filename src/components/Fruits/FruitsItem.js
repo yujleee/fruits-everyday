@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 
-import { cartActions } from '../../../store/cart-slice';
-import { uiActions } from '../../../store/ui-slice';
+import { cartActions } from '../../store/cart-slice';
+import { uiActions } from '../../store/ui-slice';
 import classes from './FruitsItem.module.css';
 
 const FruitsItem = ({ id, name, description, price, image }) => {

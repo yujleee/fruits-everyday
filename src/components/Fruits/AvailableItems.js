@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useCallback } from 'react';
 
-import FruitsItem from './FruitsItem/FruitsItem';
+import FruitsItem from './FruitsItem';
 import { dataActions } from '../../store/data-slice';
 import classes from './AvailableItems.module.css';
 
