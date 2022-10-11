@@ -30,20 +30,22 @@ const CartItem = (props) => {
     <li className={classes.item} id={id}>
       <header>
         <h3>{name}</h3>
-        <div className={classes.price}>
+        <div className={classes.price} aria-label="가격">
           <span>{price.toLocaleString()} 원</span>
         </div>
       </header>
-      <div className={classes.details}>
-        <div className={classes.image}>
+      <div className={classes.details} aria-label="상품">
+        <div className={classes.image} role="img">
           <img src={image} alt={name} />
         </div>
-        <div className={classes.actions}>
+        <div className={classes.actions} aria-label="수량조절">
           <button onClick={removeToCartHandler}>
             <FontAwesomeIcon icon={faMinus} />
           </button>
-          <div className={classes.quantity}>{quantity}</div>
-          <button onClick={addToCartHandler}>
+          <div className={classes.quantity} aria-label="상품개수">
+            {quantity}
+          </div>
+          <button onClick={addToCartHandler} type="button">
             <FontAwesomeIcon icon={faPlus} />
           </button>
         </div>

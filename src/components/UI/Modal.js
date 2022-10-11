@@ -9,8 +9,10 @@ const Backdrop = (props) => {
 
 const Overlay = (props) => {
   return (
-    <div className={classes.modal}>
-      <div className={classes.content}>{props.children}</div>
+    <div className={classes.modal} role="region" aria-hidden>
+      <div className={classes.content} aria-label="장바구니">
+        {props.children}
+      </div>
     </div>
   );
 };

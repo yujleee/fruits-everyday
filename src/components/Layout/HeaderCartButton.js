@@ -14,10 +14,12 @@ const HeaderCartButton = () => {
 
   return (
     <button className={classes.button} onClick={toggleModalHandler}>
-      <span className={classes.icon}>
+      <span className={classes.icon} aria-hidden>
         <CartIcon />
       </span>
-      <span className={classes.badge}>{quantity}</span>
+      <span className={classes.badge} aria-label={`장바구니 ${quantity}개`}>
+        {quantity}
+      </span>
     </button>
   );
 };

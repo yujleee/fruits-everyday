@@ -41,21 +41,21 @@ const Cart = () => {
   return (
     <Modal>
       {cartItem}
-      <div className={classes.total}>
+      <div className={classes.total} aria-label="총 금액">
         <span>총 금액</span>
         <span className={classes.price}>{totalPrice.toLocaleString()} 원</span>
       </div>
-      <div className={classes.actions}>
-        <button className={classes['button--alt']} onClick={hideModalHandler}>
+      <div className={classes.actions} aria-hidden>
+        <button type="button" className={classes['button--alt']} onClick={hideModalHandler}>
           닫기
         </button>
         {!activeCart && (
-          <button className={classes['button--disabled']} disabled={!activeCart}>
+          <button type="button" className={classes['button--disabled']} disabled={!activeCart}>
             주문하기
           </button>
         )}
         {activeCart && (
-          <button className={classes.button} onClick={hideModalHandler}>
+          <button type="button" className={classes.button} onClick={hideModalHandler}>
             <Link to="/order">주문하기</Link>
           </button>
         )}

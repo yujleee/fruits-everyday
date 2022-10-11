@@ -23,8 +23,8 @@ const FruitsItem = ({ id, name, description, price, image }) => {
   };
 
   return (
-    <li className={classes['fruits-item']} area-label="fruits-item">
-      <div className={classes.img} aria-label="image">
+    <li className={classes['fruits-item']}>
+      <div className={classes.img} role="img">
         <img src={image} alt={name} />
       </div>
       <h4>{name}</h4>
@@ -33,7 +33,9 @@ const FruitsItem = ({ id, name, description, price, image }) => {
         <b>{price.toLocaleString()} 원</b>
       </p>
       <div>
-        <button onClick={addToCartHandler}>구매하기</button>
+        <button type="button" onClick={addToCartHandler}>
+          구매하기
+        </button>
       </div>
     </li>
   );
