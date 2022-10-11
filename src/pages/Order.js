@@ -6,17 +6,8 @@ import CartList from '../components/Cart/CartList';
 import LoadingSpinner from '../components/UI/LoadingSpinner';
 import useInput from '../hooks/use-input';
 import { cartActions } from '../store/cart-slice';
+import { checkEmailIsValid, checkPhoneIsValid } from '../components/UI/Forms';
 import classes from './Order.module.css';
-
-const checkEmailIsValid = (email) => {
-  const regex = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-  return email !== '' && email !== 'undefined' && regex.test(email);
-};
-
-const checkPhoneIsValid = (phone) => {
-  const regex = /01[016789]-[^0][0-9]{2,3}-[0-9]{3,4}/;
-  return phone !== '' && phone !== 'undefined' && regex.test(phone);
-};
 
 const Order = () => {
   const dispatch = useDispatch();
@@ -63,11 +54,12 @@ const Order = () => {
   } = useInput((value) => checkPhoneIsValid(value));
 
   const submitCartHandler = async () => {
-    const response = await fetch('https://fruits-everyday-default-rtdb.firebaseio.com/order.json', {
+    const response = await fetch('https://fruits-everyday-default-rtdb.firebaseio.com/orders.json', {
       method: 'POST',
       body: JSON.stringify({
         user: {
           name: enteredName,
+          phone: enteredPhone,
           address: enteredAddress,
           email: enteredEmail,
         },
