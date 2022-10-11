@@ -1,4 +1,7 @@
+import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClipboard } from '@fortawesome/free-solid-svg-icons';
 
 import { uiActions } from '../../store/ui-slice';
 import CartIcon from '../Cart/CartIcon';
@@ -13,14 +16,19 @@ const HeaderCartButton = () => {
   };
 
   return (
-    <button className={classes.button} onClick={toggleModalHandler}>
-      <span className={classes.icon} aria-hidden>
-        <CartIcon />
-      </span>
-      <span className={classes.badge} aria-label={`장바구니 ${quantity}개`}>
-        {quantity}
-      </span>
-    </button>
+    <div className={classes['btn-wrap']} aria-hidden>
+      <Link to={'/orders'} className={classes.button} aria-label="주문확인">
+        <FontAwesomeIcon icon={faClipboard} className={classes.icon} />
+      </Link>
+      <button className={classes.button} onClick={toggleModalHandler} aria-label="장바구니">
+        <span className={`${classes.icon} ${classes.cart}`} aria-hidden>
+          <CartIcon />
+        </span>
+        <span className={classes.badge} aria-label={`장바구니 ${quantity}개`}>
+          {quantity}
+        </span>
+      </button>
+    </div>
   );
 };
 
