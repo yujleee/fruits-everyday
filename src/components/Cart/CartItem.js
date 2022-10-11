@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { cartActions } from '../../store/cart-slice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,6 +8,7 @@ import classes from './CartItem.module.css';
 
 const CartItem = (props) => {
   const dispatch = useDispatch();
+  const checkOrder = useSelector((state) => state.ui.checkOrder);
   const { name, quantity, price, id, image } = props;
 
   const addToCartHandler = () => {
@@ -22,6 +23,7 @@ const CartItem = (props) => {
       })
     );
   };
+
   const removeToCartHandler = () => {
     dispatch(cartActions.removeToCart({ id }));
   };
@@ -39,15 +41,19 @@ const CartItem = (props) => {
           <img src={image} alt={name} />
         </div>
         <div className={classes.actions} aria-label="수량조절">
-          <button onClick={removeToCartHandler}>
-            <FontAwesomeIcon icon={faMinus} />
-          </button>
+          {!checkOrder && (
+            <button onClick={removeToCartHandler}>
+              <FontAwesomeIcon icon={faMinus} />
+            </button>
+          )}
           <div className={classes.quantity} aria-label="상품개수">
             {quantity}
           </div>
-          <button onClick={addToCartHandler} type="button">
-            <FontAwesomeIcon icon={faPlus} />
-          </button>
+          {!checkOrder && (
+            <button onClick={addToCartHandler}>
+              <FontAwesomeIcon icon={faPlus} />
+            </button>
+          )}
         </div>
       </div>
     </li>

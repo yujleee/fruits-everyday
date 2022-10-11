@@ -5,6 +5,7 @@ const uiSlice = createSlice({
   initialState: {
     visibleModal: false,
     activeCart: false,
+    checkOrder: false,
   },
   reducers: {
     toggleModal(state) {
@@ -17,6 +18,10 @@ const uiSlice = createSlice({
 
     cartDisabled(state) {
       state.activeCart = false;
+    },
+
+    toggleCheckOrder(state) {
+      state.checkOrder = !state.checkOrder;
     },
   },
 });
