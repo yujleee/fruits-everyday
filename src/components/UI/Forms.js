@@ -4,6 +4,6 @@ export const checkEmailIsValid = (email) => {
 };
 
 export const checkPhoneIsValid = (phone) => {
-  const regex = /01[016789]-[^0][0-9]{2,3}-[0-9]{3,4}/;
+  const regex = /(01[0])([0-9]{4})([0-9]{4})$/;
   return phone !== '' && phone !== 'undefined' && regex.test(phone);
 };
