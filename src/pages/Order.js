@@ -111,7 +111,14 @@ const Order = () => {
           <form onSubmit={submitFormHandler}>
             <div className={classes['input-wrap']} aria-label="이름입력">
               <label htmlFor="name">이름</label>
-              <input type="text" id="name" value={enteredName} onChange={nameChangeHandler} onBlur={nameBlurHandler} />
+              <input
+                type="text"
+                id="name"
+                placeholder="김리을"
+                value={enteredName}
+                onChange={nameChangeHandler}
+                onBlur={nameBlurHandler}
+              />
               {nameHasError && <p className={classes['error-text']}>이름은 2글자 이상이어야 합니다.</p>}
             </div>
 
@@ -120,6 +127,7 @@ const Order = () => {
               <input
                 type="text"
                 id="address"
+                placeholder="서울시"
                 value={enteredAddress}
                 onChange={addressChangeHandler}
                 onBlur={addressBlurHandler}
@@ -132,6 +140,7 @@ const Order = () => {
               <input
                 type="tel"
                 id="phone"
+                placeholder="010-0000-0000"
                 value={enteredPhone}
                 onChange={phoneChangeHandler}
                 onBlur={phoneBlurHandler}
@@ -144,6 +153,7 @@ const Order = () => {
               <input
                 type="email"
                 id="email"
+                placeholder="fruits@everday.com"
                 value={enteredEmail}
                 onChange={emailChangeHandler}
                 onBlur={emailBlurHandler}

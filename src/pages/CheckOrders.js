@@ -91,7 +91,14 @@ const Orders = () => {
         <form onSubmit={submitFormHandler}>
           <div className={classes['input-wrap']} aria-label="이름입력">
             <label htmlFor="name">이름</label>
-            <input type="text" id="name" value={enteredName} onChange={nameChangeHandler} onBlur={nameBlurHandler} />
+            <input
+              type="text"
+              placeholder="김리을"
+              id="name"
+              value={enteredName}
+              onChange={nameChangeHandler}
+              onBlur={nameBlurHandler}
+            />
             {nameHasError && <p className={classes['error-text']}>이름은 2글자 이상이어야 합니다.</p>}
           </div>
 
@@ -100,6 +107,7 @@ const Orders = () => {
             <input
               type="email"
               id="email"
+              placeholder="fruits@everday.com"
               value={enteredEmail}
               onChange={emailChangeHandler}
               onBlur={emailBlurHandler}
