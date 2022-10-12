@@ -53,10 +53,15 @@ const Orders = () => {
       });
     }
 
-    const userOrder = loadedData.find((item) => item.name === enteredName);
-    dispatch(dataActions.loadUserOrder({ userOrder }));
-    dispatch(uiActions.toggleCheckOrder());
-    navigate(`/orders/${userOrder.id}`);
+    const userOrder = loadedData.find((item) => item.name === enteredName && item.email === enteredEmail);
+
+    if (userOrder) {
+      dispatch(dataActions.loadUserOrder({ userOrder }));
+      dispatch(uiActions.toggleCheckOrder());
+      navigate(`/orders/${userOrder.id}`);
+    } else {
+      alert('일치하는 주문결과가 없습니다.');
+    }
   };
 
   const submitFormHandler = (e) => {
