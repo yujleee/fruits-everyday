@@ -1,15 +1,18 @@
+import { useState, useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect, useCallback } from 'react';
 
+import LoadingSpinner from '../UI/LoadingSpinner';
 import FruitsItem from './FruitsItem';
 import { dataActions } from '../../store/data-slice';
 import classes from './AvailableItems.module.css';
 
 const AvailableItems = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const fruits = useSelector((state) => state.data.fruits);
 
   const fetchData = useCallback(async () => {
+    setIsLoading(true);
     const response = await fetch('https://fruits-everyday-default-rtdb.firebaseio.com/fruits.json');
 
     if (!response.ok) {
@@ -30,6 +33,7 @@ const AvailableItems = () => {
     }
 
     dispatch(dataActions.loadData({ loadedData }));
+    setIsLoading(false);
   }, []);
 
   useEffect(() => {
@@ -48,9 +52,12 @@ const AvailableItems = () => {
   ));
 
   return (
-    <section classes={classes['fruits-wrap']}>
-      <ul className={classes['fruits-list']}>{fruitItems}</ul>
-    </section>
+    <>
+      {isLoading && <LoadingSpinner />}
+      <section classes={classes['fruits-wrap']}>
+        <ul className={classes['fruits-list']}>{fruitItems}</ul>
+      </section>
+    </>
   );
 };
 
