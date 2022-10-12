@@ -25,7 +25,9 @@ const Cart = () => {
 
   return (
     <Modal>
-      <CartList />
+      <div className={classes['cart-wrap']}>
+        <CartList />
+      </div>
       <div className={classes.total} aria-label="총 금액">
         <span>총 금액</span>
         <span className={classes.price}>{totalPrice.toLocaleString()} 원</span>

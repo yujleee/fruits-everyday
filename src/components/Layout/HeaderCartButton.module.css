@@ -1,17 +1,20 @@
 .btn-wrap {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
+  margin-right: 2.4rem;
 }
 
 .button {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
   font-weight: 700;
   color: var(--color-gray-300);
   background-color: transparent;
   transition: background-color 300ms ease-in-out;
+  margin: 0;
+  padding: 0.2rem;
 }
 
 .button:hover,
@@ -25,12 +28,12 @@
   width: 1px;
   height: 16px;
   background-color: var(--color-border);
-  margin-left: 1rem;
+  margin: 0 0.4rem 0 0.8rem;
 }
 
 .icon {
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1.3rem;
+  height: 1.3rem;
 }
 
 .cart {
@@ -39,9 +42,10 @@
 
 .badge {
   color: var(--color-green);
-  padding: 0.25rem 0.4rem;
-  border-radius: 25px;
+  padding: 0.25rem;
   font-weight: bold;
+  min-width: 20px;
+  letter-spacing: -0.01em;
 }
 
 .cart:hover,
@@ -51,12 +55,25 @@
 }
 
 @media screen and (min-width: 720px) {
+  .btn-wrap {
+    margin-right: 3rem;
+  }
+
   .icon {
     width: 1.35rem;
     height: 1.35rem;
   }
 
   .badge {
-    padding: 0.25rem 0.7rem;
+    padding: 0.25rem;
+  }
+
+  .button:first-child::after {
+    margin: 0 0.8rem 0 1.2rem;
+  }
+
+  .icon {
+    width: 1.2rem;
+    height: 1.2rem;
   }
 }

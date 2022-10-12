@@ -81,3 +81,19 @@
 .actions button:hover {
   color: var(--color-white);
 }
+
+.actions .btn-quantity:hover,
+.actions .btn-quantity:active {
+  background-color: transparent;
+  color: var(--color-green);
+}
+
+.btn-quantity:first-child {
+  margin-right: 0.6rem;
+}
+
+@media screen and (min-width: 720px) {
+  .btn-quantity:first-child {
+    margin-right: 0rem;
+  }
+}

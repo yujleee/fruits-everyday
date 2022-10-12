@@ -42,7 +42,7 @@ const CartItem = (props) => {
         </div>
         <div className={classes.actions} aria-label="수량조절">
           {!checkOrder && (
-            <button onClick={removeToCartHandler}>
+            <button className={classes['btn-quantity']} onClick={removeToCartHandler}>
               <FontAwesomeIcon icon={faMinus} />
             </button>
           )}
@@ -50,7 +50,7 @@ const CartItem = (props) => {
             {quantity}
           </div>
           {!checkOrder && (
-            <button onClick={addToCartHandler}>
+            <button className={classes['btn-quantity']} onClick={addToCartHandler}>
               <FontAwesomeIcon icon={faPlus} />
             </button>
           )}

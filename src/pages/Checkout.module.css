@@ -1,6 +1,6 @@
 .checkout {
   text-align: center;
-  padding: 6rem 5rem;
+  padding: 10rem 5rem;
 }
 
 .checkout .title {
@@ -19,6 +19,6 @@
 
 @media (min-width: 768px) {
   .checkout {
-    padding: 10rem 5rem;
+    padding: 10.6rem 5rem;
   }
 }
