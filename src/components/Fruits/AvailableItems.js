@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import LoadingSpinner from '../UI/LoadingSpinner';
 import FruitsItem from './FruitsItem';
 import { dataActions } from '../../store/data-slice';
-import classes from './AvailableItems.module.css';
+import styled from 'styled-components';
 
 const AvailableItems = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -54,11 +54,33 @@ const AvailableItems = () => {
   return (
     <>
       {isLoading && <LoadingSpinner />}
-      <section classes={classes['fruits-wrap']}>
-        <ul className={classes['fruits-list']}>{fruitItems}</ul>
-      </section>
+      <Wrap>
+        <List>{fruitItems}</List>
+      </Wrap>
     </>
   );
 };
 
 export default AvailableItems;
+
+const Wrap = styled.section`
+  .fruits-wrap {
+    max-width: 60rem;
+    width: 100%;
+    margin: 2rem auto;
+  }
+`;
+
+const List = styled.ul`
+  display: flex;
+  width: 70%;
+  margin: 3rem auto;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  flex-basis: 33.3%;
+
+  @media screen and (min-width: 720px) {
+    max-width: 1000px;
+  }
+`;
