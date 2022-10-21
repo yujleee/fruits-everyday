@@ -81,6 +81,12 @@ const List = styled.ul`
   flex-basis: 33.3%;
 
   @media screen and (min-width: 720px) {
+    max-width: 700px;
+    width: 68%;
+  }
+
+  @media screen and (min-width: 1024px) {
     max-width: 1000px;
+    width: 70%;
   }
 `;
