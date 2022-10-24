@@ -13,11 +13,12 @@
 
 ## 💻 기술 스택
 
-`React` `Redux` `Firebase`
+`React` `Redux` `Firebase` `styled-components`
 
 - 리액트 프레임워크를 기반삼아 SPA로 구현했습니다.
 - 리덕스로 전체적으로 효율적인 상태관리를 시도했습니다.
 - 파이어베이스를 통해 백엔드와 상호작용하며 데이터 핸들링을 해보았습니다.
+- styled-components로 css를 적용중입니다.
 
 <br/>
 <br/>
